@@ -1,0 +1,59 @@
+using System;
+using System.Collections.Generic;
+
+namespace ShoppingCart
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            List<Fruit> shopping = new List<Fruit>();
+            double priceOrange = 0.25;
+            double priceApple = 0.6;
+            Fruit Orange = new Fruit(priceOrange, "Orange");
+            Fruit Apple = new Fruit(priceApple, "Apple");
+            bool stop = false;
+            do
+            {
+                Console.WriteLine("Choose the fruit: \n 1 : Apple\n 2 : Orange");
+                string answer = Console.ReadLine();
+                if (answer == "1")
+                {
+                    shopping.Add(Orange);
+                }
+                if (answer == "2")
+                {
+                    shopping.Add(Apple);
+                }
+                double total = 0;
+                for (int i = 0; i < shopping.Count; i++)
+                {
+                    total += shopping[i].Price;
+                }
+                Console.WriteLine("The total is" + total);
+            } while (stop == false);
+            
+        }
+        public class Fruit
+    {
+        private double price;
+        private string name;
+        public Fruit(double price,string name)
+        {
+            this.price = price;
+            this.name = name;
+        }
+        public double Price
+        {
+            get
+            {
+                return this.price;
+            }
+            set
+            {
+                this.price = value;
+            }
+        }
+      }
+    }
+}
